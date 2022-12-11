@@ -1,0 +1,13 @@
+#!/bin/bash -v
+read baseFilename
+touch c_file_00.txt cpp_file_00.txt cs_file_00.txt
+for i in $(cat $baseFilename);
+do
+  if echo $i | egrep -q "*\.c$"; then
+    echo $i >> c_file_00.txt
+  elif echo $i | egrep -q "*\.cpp$"; then
+    echo  $i >> cpp_file_00.txt
+  else
+    echo $i >> cs_file_00.txt
+  fi
+done
